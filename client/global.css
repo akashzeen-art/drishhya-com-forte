@@ -1,0 +1,230 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent scroll jumping from scrollbar width changes */
+html {
+  overflow-y: scroll;
+}
+
+@layer base {
+  /**
+   * Black & White Drishhyatic Theme
+   * Premium OTT-style streaming platform
+  */
+  :root {
+    /* Backgrounds */
+    --background: 0, 0, 0;
+    --foreground: 255, 255, 255;
+
+    /* Cards & Surfaces */
+    --card: 10, 10, 10;
+    --card-foreground: 255, 255, 255;
+
+    --popover: 10, 10, 10;
+    --popover-foreground: 255, 255, 255;
+
+    /* Primary & Interactive */
+    --primary: 255, 255, 255;
+    --primary-foreground: 0, 0, 0;
+
+    /* Secondary */
+    --secondary: 17, 17, 17;
+    --secondary-foreground: 255, 255, 255;
+
+    /* Muted & Subtle */
+    --muted: 115, 115, 115;
+    --muted-foreground: 212, 212, 212;
+
+    /* Accent */
+    --accent: 255, 255, 255;
+    --accent-foreground: 0, 0, 0;
+
+    /* Destructive */
+    --destructive: 220, 38, 38;
+    --destructive-foreground: 255, 255, 255;
+
+    /* Borders */
+    --border: 50, 50, 50;
+    --input: 17, 17, 17;
+    --ring: 255, 255, 255;
+
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar-background: 0, 0, 0;
+    --sidebar-foreground: 255, 255, 255;
+    --sidebar-primary: 255, 255, 255;
+    --sidebar-primary-foreground: 0, 0, 0;
+    --sidebar-accent: 17, 17, 17;
+    --sidebar-accent-foreground: 255, 255, 255;
+    --sidebar-border: 50, 50, 50;
+    --sidebar-ring: 255, 255, 255;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+}
+
+@layer components {
+  .glass-dark {
+    @apply bg-black/40 backdrop-blur-md border border-white/8;
+  }
+
+  .glow-white {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+
+  .glow-white-hover {
+    @apply transition-all duration-300;
+  }
+
+  .glow-white-hover:hover {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .text-subtitle {
+    @apply text-white/65;
+  }
+
+  .text-muted-strong {
+    @apply text-white/80;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Smooth scrolling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Drishhyatic image zoom (Ken Burns) */
+  @keyframes ken-burns {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.08);
+    }
+  }
+
+  .animate-ken-burns {
+    animation: ken-burns 20s ease-out forwards;
+  }
+
+  /* Shimmer loading effect */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.06) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2.5s infinite;
+  }
+
+  /* Smooth image load fade */
+  .img-reveal {
+    @apply transition-opacity duration-700 ease-out;
+  }
+
+  /* Link underline animation */
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+
+  @keyframes progress-fill {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  .animate-progress-fill {
+    animation: progress-fill linear forwards;
+  }
+
+  @keyframes hero-video-zoom {
+    from {
+      transform: scale(1.05);
+    }
+    to {
+      transform: scale(1.12);
+    }
+  }
+
+  .animate-hero-video-zoom {
+    animation: hero-video-zoom 25s ease-out forwards;
+  }
+}
